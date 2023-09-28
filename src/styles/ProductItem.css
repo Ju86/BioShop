@@ -1,0 +1,32 @@
+.lbs-product-item-cover {
+	height: 220px;
+	width: 220px;
+	border-radius: 20px;
+	object-fit: cover;
+
+}
+
+.lbs-product-item {
+	margin: 10px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	text-transform: capitalize;
+	position: relative;
+}
+
+.lbs-product-item-price {
+	position: absolute;
+	border-radius: 20px 20px 20px 0;
+	background-color: #0ba360;
+	color: white;
+	padding: 15px;
+	right: 0;
+	top: 0;
+	font-weight: 500;
+}
+
+.lbs-product-name {
+	color: #0ba360;
+}
