@@ -25,6 +25,8 @@
 	right: 0;
 	top: 0;
 	font-weight: 500;
+	display: flex;
+    align-items: center;
 }
 
 .lbs-product-name {

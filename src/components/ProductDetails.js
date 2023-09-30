@@ -6,27 +6,23 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function ProductDetails({ cart, updateCart }) {
-
   const [product, setProduct] = useState([]);
 
-  const  {id} = useParams();
- 
-  console.log(id);
+  const { id } = useParams();
   // const product = products && products.find((product) => product.id === id);
-
-  const fetchData =  () => {
+  const fetchData = () => {
     // axios.get('https://jsonplaceholder.typicode.com/posts').then(resp => {
-    axios.get(`https://127.0.0.1:8000/api/products/${id}`).then(resp => {
-
-    console.log(resp.data);
-    setProduct(resp.data);
-  });}
+    axios.get(`https://127.0.0.1:8000/api/products/${id}`).then((resp) => {
+      setProduct(resp.data);
+    });
+  };
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line
   }, []);
 
-  function addToCart(name, price) {
+  function addToCart(name, price, id) {
     const currentProductAdded = cart.find((product) => product.name === name);
     if (currentProductAdded) {
       const cartFilteredCurrentProduct = cart.filter(
@@ -34,29 +30,16 @@ export default function ProductDetails({ cart, updateCart }) {
       );
       updateCart([
         ...cartFilteredCurrentProduct,
-        { name, price, amount: currentProductAdded.amount + 1 },
+        { name, price, id, amount: currentProductAdded.amount + 1 },
       ]);
     } else {
-      updateCart([...cart, { name, price, amount: 1 }]);
+      updateCart([...cart, { name, price, id, amount: 1 }]);
     }
   }
+  
+
 
   return (
-    // <div className="lbs-shopping-details">
-    //   <div className="lbs-product-details-container">
-    //   <h1>{product.name}</h1>
-
-    //   <button
-    //     className="bn632-hover bn22"
-    //     onClick={() => addToCart(product.name, product.price)}
-    //   >
-    //     Ajouter au panier
-    //   </button>
-    //   </div>
-    //   <div>
-    //     <Cart cart={cart} updateCart={updateCart} />
-    //   </div>
-    // </div>
     <div className="lbs-shopping-details">
       <div className="wrapper">
         <div className="product-img">
@@ -68,17 +51,11 @@ export default function ProductDetails({ cart, updateCart }) {
             <h2>{product.category}</h2>
             <p>{product.details}</p>
           </div>
-          <div className="product-price-btn">
-            <p>
-              <span>{product.price}</span>€
-            </p>
-            <button
-              type="button"
-              onClick={() => addToCart(product.name, product.price)}
-            >
-              Ajouter
-            </button>
-          </div>
+          <div className="product-price">
+            <span>{product.price} €</span>
+            <span className="unit">{product.unit}</span>
+           <button className="bn632-hover bn22" onClick={() => addToCart(product.name, product.price, product.id)}>Ajouter</button>
+          </div> 
         </div>
       </div>
       <div className="cart-container">

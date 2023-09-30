@@ -1,4 +1,4 @@
-.lmj-plant-list {
+.product-list {
 	list-style-type: none;
 	padding: 32px;
 	display: flex;
@@ -7,8 +7,9 @@
 	width: 94%;
 }
 
-.lmj-shopping-list {
-	width: 100%;
+.shopping-list-container {
+	width: 85%;
+	height: 92vh;
 }
 
 .bn632-hover {
@@ -52,23 +53,22 @@
 	box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
   }
 
-  .lbs-product-card-container {
+  .cart-container {
 	display: flex;
+	flex-direction: column;
+	color: #fff;
+	width: 15%;
+	height: 92vh;
+	background-color: #0ba360;
   }
 
-  .lbs-search {
-	text-align: center;
+  .search-container {
+	display: flex;
+	justify-content: center;
     padding-top: 30px;
   }
 
   .unit {
 	font-size: medium;
 	font-style: italic;
-  }
-
-  .search-input {
-	height: 3vh;
-    width: 20vw;
-    border-radius: 15px;
-    font-size: large;
   }

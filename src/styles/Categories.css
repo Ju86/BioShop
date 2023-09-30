@@ -1,9 +1,6 @@
-.lbs-categories {
-	text-align: center;
+.categories-container {
+	display: flex;
+    justify-content: center;
 	padding-top: 30px;
 }
 
-.lbs-categories-select {
-	margin-right: 15px;
-	height: 5vh;
-}

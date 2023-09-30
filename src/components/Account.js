@@ -6,6 +6,7 @@ export default function Account() {
        redirect('/')
     };
     return (
+      
      <button onClick={logout}>logout</button>
     )
 }

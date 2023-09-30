@@ -1,64 +1,176 @@
 import React, {useState}from "react";
+// import { formik } from "formik";
+import {
+  Box,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import axios from "axios";
 
-import { useNavigate } from 'react-router-dom';
- 
-function Register() {
-    
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-   
-  const navigate = useNavigate();
+export default function Register() {
+  // const formik = useFormik({
+  //   initialValues: {
+  //     firstname: "",
+  //     lastname: "",
+  //     username: "",
+  //     password: "",
+  //     address: "",
+  //     postcode: "",
+  //     city: "",
+  //     telephone: "",
+  //   },    onSubmit: (values) => {
+  //     alert(JSON.stringify(values, null, 2));
+  //   }
+  // });
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        console.log(name, email, password);
-        const userData = {
-            name,
-            email,
-            password,
-        };
-        localStorage.setItem('token-info', JSON.stringify(userData));
-        setName('');
-        setEmail('');
-        setPassword('');
-        
-        navigate('/')
+  const [data, setData] = useState({
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+    address: "",
+    postcode: "",
+    city: "",
+    telephone: "",
+  })
+
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const userData = {
+        firstname: data.firstname,
+        lastname: data.lastname,
+        password: data.password,
+        address: data.address,
+        postcode: data.postcode,
+        city: data.city,
+        telephone: data.telephone,
+        email: data.email,
+        password: data.password
+      };
+      axios.post("https://127.0.0.1:8000/api/users", userData).then((response) => {
+        console.log(response.status, response.data.token);
+        JSON.stringify(userData);
+      });
     };
-   
-
- 
 
 
- 
-    return (
-        <>
-            <p className="title">Registration Form</p>
- 
-            <form action="">
-                            <input
-                                type="text"
-                                onChange={(e) => setName(e.target.value)}
-                                value={name}
-                                placeholder="Name"
-                            />
-                            <input
-                                type="email"
-                                onChange={(e) => setEmail(e.target.value)}
-                                value={email}
-                                placeholder="Email"
-                            />
-                            <input
-                                type="password"
-                                onChange={(e) => setPassword(e.target.value)}
-                                value={password}
-                                placeholder="Password"
-                            />
-                            <button type="submit" onClick={onSubmit}>
-                                GO
-                            </button>
-                        </form>
-        </>
-    );
+
+  return (
+    <Flex align="flex-start" justify="center">
+      <Box bg={"white"} p={6} rounded="md" boxShadow="md" margin={"2%"}>
+        <form onSubmit={handleSubmit}>
+          <Box display={"flex"} >
+            <FormControl >
+              <FormLabel htmlFor="firstname">Nom</FormLabel>
+              <Input
+                id="firstname"
+                name="firstname"
+                type="text"
+                variant="filled"
+                onChange={handleChange}
+                value={data.firstname}
+              />
+            </FormControl>
+            <FormControl >
+              <FormLabel htmlFor="lastname">Prénom</FormLabel>
+              <Input
+                id="lastname"
+                name="lastname"
+                type="text"
+                variant="filled"
+                onChange={handleChange}
+                value={data.lastname}
+              />
+            </FormControl>
+          </Box>
+
+          <FormControl >
+            <FormLabel htmlFor="email">Adresse</FormLabel>
+            <Input
+              id="address"
+              name="address"
+              type="text"
+              variant="filled"
+              onChange={handleChange}
+              value={data.address}
+            />
+          </FormControl>
+          <Box display={"flex"}>
+            <FormControl >
+              <FormLabel htmlFor="email">Code Postal</FormLabel>
+              <Input
+                id="postcode"
+                name="postcode"
+                type="text"
+                variant="filled"
+                w={"50%"}
+                onChange={handleChange}
+                value={data.postcode}
+              />
+            </FormControl>
+
+            <FormControl >
+              <FormLabel htmlFor="email">Ville</FormLabel>
+              <Input
+                id="city"
+                name="city"
+                type="text"
+                variant="filled"
+                onChange={handleChange}
+                value={data.city}
+              />
+            </FormControl>
+          </Box>
+          <FormControl>
+            <FormLabel htmlFor="email">Téléphone</FormLabel>
+            <Input
+              id="telephone"
+              name="telephone"
+              type="text"
+              variant="filled"
+              w={"50%"}
+              onChange={handleChange}
+              value={data.telephone}
+            />
+          </FormControl>
+          <FormControl >
+            <FormLabel htmlFor="email">Email</FormLabel>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              variant="filled"
+              onChange={handleChange}
+              value={data.email}
+            />
+          </FormControl>
+          <FormControl >
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              variant="filled"
+              onChange={handleChange}
+              value={data.password}
+            />
+          </FormControl>
+
+          <Button type="submit" colorScheme="green" marginLeft={"40%"} >
+            S'inscrire
+          </Button>
+        </form>
+      </Box>
+    </Flex>
+  );
 }
-export default Register;

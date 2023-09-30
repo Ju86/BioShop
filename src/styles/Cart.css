@@ -1,52 +1,52 @@
-.lmj-cart {
+.cart {
 	color: white;
 	background-color: #0ba360;
-	padding: 32px;
+	padding: 16px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	width: 250px;
+
 
 }
 
-.lmj-cart-add-button {
-	margin-left: 32px;
-	cursor: pointer;
+.cart h2 {
+	font-size: 40px;
+    font-weight: 700;
 }
 
-.lmj-cart-toggle-button {
-	background: none;
-	outline: none;
-	border: none;
+
+span.name {
+	font-size: 22px;
+	font-weight: bold;
+
+}
+span.price {
+	font-size: 20px;
 	font-weight: 600;
-	cursor: pointer;
-	padding: 0;
-	color: white;
-	align-self: flex-end;
-	margin-bottom: 30px;
-}
-.lmj-cart-tooggle-button {
-	outline: none;
-	border: none;
-	font-weight: 600;
-	cursor: pointer;
-	padding: 0;
-	color: white;
-	align-self: flex-end;
-}
-
-.lmj-cart-closed {
-	padding: 32px;
-	/* width: 200px; */
-}
-
-.lbs-logo-panier {
-	height: 60px;
-}
-
-.lmj-cart-closed > button {
-	color: white;
-	background:  #0ba360;
 
 }
+span.qty {
+	font-size: 22px;
+}
 
+.total {
+	font-size: 30px;
+	font-weight: 700;
+}
+.name-price-qty-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.cart-details {
+	height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+	align-items: center;
+}
+
+.chakra-button.css-5sdmey {
+	width: 75%;
+}

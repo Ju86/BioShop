@@ -7,7 +7,7 @@
 	justify-content: space-between;
 	flex-direction: row;
 	align-items: center;
-	height: 4vh;
+	height: 8vh;
 }
 
 .lbs-title {
@@ -17,11 +17,52 @@
 }
 
 .lbs-logo {
-	height: 145px;
-	width: 300px;
+	height: 80px;
+	width: 180px;
 }
 
-.lbs-logo-account {
-	height: 60px;
+
+.bn632-hover-icon {
 	width: 60px;
-}
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+	margin: 20px;
+	height: 55px;
+	text-align:center;
+	border: none;
+	background-size: 300% 100%;
+	border-radius: 50px;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+  }
+  
+  .bn632-hover-icon:hover {
+	background-position: 100% 0;
+	moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+  }
+  
+  .bn632-hover-icon:focus {
+	outline: none;
+  }
+  
+  .bn632-hover-icon.bn22 {
+	background-image: linear-gradient(
+	  to right,
+	  #0ba360,
+	  #3cba92,
+	  #30dd8a,
+	  #2bb673
+	);
+	box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+  }
+
+  .lbs-icon {
+	display: flex;
+  }

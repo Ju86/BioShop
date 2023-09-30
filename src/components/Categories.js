@@ -1,22 +1,27 @@
 import "../styles/Categories.css";
+import { Select } from "@chakra-ui/react";
 
 function Categories({ setActiveCategory, categories, activeCategory }) {
   return (
-    <div className="lbs-categories">
-      <select
+
+    <div className="categories-container">
+
+      <Select
+        placeholder="Tous les produits"
         value={activeCategory}
         onChange={(e) => setActiveCategory(e.target.value)}
-        className="lbs-category-select"
+        w={"9vw"}
+        borderColor='#0ba360'
       >
-        <option value="">---</option>
         {categories.map((cat) => (
           <option key={cat} value={cat}>
             {cat}
           </option>
         ))}
-      </select>
-      <button onClick={() => setActiveCategory("")}>Réinitialiser</button>
+      </Select>
+      {/* <button onClick={() => setActiveCategory("")}>Réinitialiser</button> */}
     </div>
+    
   );
 }
 
